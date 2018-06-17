@@ -3,6 +3,10 @@ import uuid from "uuid";
 import logo from "./logo.svg";
 import "./App.css";
 
+const DropZone = ({ position, onDropHandle }) => (
+  <div className="DropZone" position={position} />
+);
+
 class App extends Component {
   state = {
     lis: [
@@ -14,16 +18,23 @@ class App extends Component {
       { id: uuid(), name: "Li No. 6" }
     ]
   };
+
+  onDragStart = e => console.log("testing... ", e.target.id);
+
   render() {
     const { lis } = this.state;
 
     return (
       <div className="App">
         <ul>
+          <DropZone position={0} />
           {lis.map(({ id, name }, index) => (
-            <li key={id} position={index} id={id}>
-              {name}
-            </li>
+            <span key={id}>
+              <li draggable="true" id={id} onDragStart={this.onDragStart}>
+                {name}
+              </li>
+              <DropZone position={index + 1} />
+            </span>
           ))}
         </ul>
       </div>

@@ -24,4 +24,17 @@
   background: #fff;
   margin: 10px 0;
   cursor: pointer;
+  user-select: none;
+}
+
+.App .DropZone {
+  height: 10px;
+  opacity: 0;
+  background-color: rgb(148, 148, 221);
+  transition: all 200ms;
+}
+
+.App .DropZone:hover {
+  height: 30px;
+  opacity: 1;
 }
