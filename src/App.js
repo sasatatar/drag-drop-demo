@@ -1,18 +1,31 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import uuid from "uuid";
+import logo from "./logo.svg";
+import "./App.css";
 
 class App extends Component {
+  state = {
+    lis: [
+      { id: uuid(), name: "Li No. 1" },
+      { id: uuid(), name: "Li No. 2" },
+      { id: uuid(), name: "Li No. 3" },
+      { id: uuid(), name: "Li No. 4" },
+      { id: uuid(), name: "Li No. 5" },
+      { id: uuid(), name: "Li No. 6" }
+    ]
+  };
   render() {
+    const { lis } = this.state;
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <ul>
+          {lis.map(({ id, name }, index) => (
+            <li key={id} position={index} id={id}>
+              {name}
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
